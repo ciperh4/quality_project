@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ثبت‌نام - تضمین کیفیت</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body dir="rtl">
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+         <br><h3>ایجاد حساب کاربری</h3>
+          <div class="d-flex justify-content-end social_icon">
+            <span><i class="fab fa-vote-yea"></i></span>
+						<span><i class="fab fa-cogs"></i></span>
+						<span><i class="fab fa-university"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-icon"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control" id="txt-username" placeholder="نام کاربری"  title="نام کاربری خود را ترکیب از حروف بزرگ و کوچک ـ سمبل قرار دهید! " {{ form.username }}>
+              
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-icon"><i class="fas fa-envelope"></i></span>
+              </div>
+              <input type="text" class="form-control" id="txt-email" placeholder="ایمیل"  title="ایمیل خود راوارد کنید!" {{ form.email }}>
+             
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-icon"><i class="fas fa-key"></i></span>
+              </div>
+            <input type="password" class="form-control" id="txt-password" placeholder="رمز عبور"  title="رمز عبور باید ترکیب از کارکترها حروف و حداقل ۸ کارکتر باشد!" {{ form.password1 }}>  
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-icon"><i class="fas fa-key"></i></span>
+              </div>
+             <input type="password" class="form-control" id="txt-password" placeholder="تکرار رمز عبور" title="رمز عبور باید ترکیب از کارکترها حروف و حداقل ۸ کارکتر باشد!" {{ form.password2 }}>
+
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-icon"><i class="fas fa-user-tag"></i></span>
+              </div>
+              <input type="submit" value="نوع حساب" class="form-control">
+              <select name="role" id="id_role" class="form-control">
+                <option value="student">دانشجو</option>
+                <option value="admin">مدیر</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn float-right login_btn">ثبت‌نام</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-center links">
+            قبلاً حساب دارید؟ <a href="{% url 'login' %}">ورود</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

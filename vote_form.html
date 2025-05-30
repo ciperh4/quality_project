@@ -1,0 +1,50 @@
+<!-- vote_form.html - فرم رأی‌گیری با Bootstrap و راست‌چین -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <meta charset="UTF-8">
+    <title>رأی‌گیری استاد</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 text-primary">فرم ارزیابی استاد</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">{{ vote_form.teacher.label_tag }}{{ vote_form.teacher }}</div>
+                <div class="col-md-6">{{ vote_form.subject.label_tag }}{{ vote_form.subject }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">{{ vote_form.semester.label_tag }}{{ vote_form.semester }}</div>
+                <div class="col-md-6">{{ vote_form.class_name.label_tag }}{{ vote_form.class_name }}</div>
+            </div>
+
+            <h5 class="mt-4">پرسش‌ها:</h5>
+            {% for field in answer_form %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">{{ field.label }}</label><br>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <div class="mb-3">
+                {{ vote_form.comment.label_tag }}
+                {{ vote_form.comment }}
+            </div>
+
+            <button type="submit" class="btn btn-success">ثبت رأی</button>
+        </form>
+    </div>
+</body>
+</html>
